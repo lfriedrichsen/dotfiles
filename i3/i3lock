@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# script to show lock-screen
+i3lock -c 111111 && killall i3-nagbar
