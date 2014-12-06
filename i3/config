@@ -2,24 +2,37 @@
 #
 # Should you change your keyboard layout somewhen, delete
 # this file and re-run i3-config-wizard(1).
-#
+# i3 wm config by lafriedrichsen
+# version: 0.5
+# date: 12/06/2014
 
-# i3 config file (v4)
-#
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # variables
 set $mod Mod4
 set $lock '~$USER/.i3/i3lock'
+set $quiet exec --no-startup-id
+
+# workspace names
+set $ws1 >_ 1
+set $ws2 >_ 2
+set $ws3 >_ 3
+set $ws4 >_ 4
+set $ws5 >_ 5
+set $ws6 >_ 6
+set $ws7 >_ 7
+set $ws8 >_ 8
+set $ws9 >_ 9
+set $ws10 >_ 10
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
- font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-#font pango:DejaVu Sans Mono 10
+font xft:Ohsnap 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -32,7 +45,7 @@ bindsym $mod+Return exec --no-startup-id xfce4-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec dmenu_run -p ">>" -fn "ohsnap-10"
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
 
 # change focus
@@ -77,28 +90,28 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1|admin
-bindsym $mod+2 workspace 2|fm
-bindsym $mod+3 workspace 3|www
-bindsym $mod+4 workspace 4|music
-bindsym $mod+5 workspace 5|work
-bindsym $mod+6 workspace 6|edit
-bindsym $mod+7 workspace 7|VM
-bindsym $mod+8 workspace 8|graphics
-bindsym $mod+9 workspace 9|games
-bindsym $mod+0 workspace 10|foo
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1|admin
-bindsym $mod+Shift+2 move container to workspace 2|fm
-bindsym $mod+Shift+3 move container to workspace 3|www
-bindsym $mod+Shift+4 move container to workspace 4|music
-bindsym $mod+Shift+5 move container to workspace 5|work
-bindsym $mod+Shift+6 move container to workspace 6|edit
-bindsym $mod+Shift+7 move container to workspace 7|VM
-bindsym $mod+Shift+8 move container to workspace 8|graphics
-bindsym $mod+Shift+9 move container to workspace 9|games
-bindsym $mod+Shift+0 move container to workspace 10|foo
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -132,17 +145,15 @@ bar {
 	tray_output primary
 	
 	colors {
-        background #212121
-        statusline #dddddd
-        separator #666666
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #888888
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
+		background #002b36
+        	statusline #93a1a1
+        	separator  #073642
+        	focused_workspace  #586e75 #657b83 #fdf6e3
+        	active_workspace   #1a2122 #232323 #eee8d5
+        	inactive_workspace #073642 #073642 #93a1a1
+        	urgent_workspace   #dc322f #dc322f #fdf6e3
+	}
 }
-}
-
-## user added stuff
 
 # startup
 exec --no-startup-id nitrogen --restore
@@ -153,17 +164,11 @@ exec --no-startup-id xfce4-terminal
 # exec --no-startup-id vidalia
 
 # window behaviour
-#for_window [class="MPlayer"] floating enable
-#for_window [class="Ts3client_linux_amd64"] floating enable
+for_window [class="MPlayer"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="Lxappearance"] floating enable
-for_window [class="Steam"] floating enable
-for_window [class="Pidgin"] floating enable
 for_window [class="plugin-container"] floating enable
-# for_window [class="VirtualBox"] floating enable
-
-
 
 # volume-control
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
@@ -171,25 +176,22 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # assign programm to specific workspace
-# assign [class="Xfce4-terminal"] "1|admin"
-assign [class="Pcmanfm"] "2|fm"
-#assign [class="MPlayer"] "10|foo"
-assign [class="Gimp"] "8|graphics"
-assign [class="Firefox"] "3|www"
-assign [class="Steam"] "9|games"
-assign [class="VirtualBox"] "7|VM"
-#assign [class="Ts3client_linux_amd64"] "8|steam/ts"
-#assign [class="Pidgin"] "10|foo"
-#assign [class="zsnes"] "5|gaming"
+assign [class="Pcmanfm"] $ws2
+assign [class="Gimp"] $ws8
+assign [class="Firefox"] $ws3
+assign [class="Steam"] $ws9
+assign [class="VirtualBox"] $ws7
+#assign [class="Ts3client_linux_amd64"] $ws9
+assign [class="zsnes"] $ws9
 
 ## theme
 
 # $i3-theme-window
 # class                 border  backgr. text    indicator
-client.focused          #0088CC #0088CC #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
-client.unfocused        #333333 #333333 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
+client.focused          #586e75 #586e75 #fdf6e3 #268bd2
+client.focused_inactive #073642 #073642 #93a1a1 #268bd2
+client.unfocused        #073642 #073642 #93a1a1 #268bd2
+client.urgent           #dc322f #dc322f #fdf6e3 #ffa7da
 
 # i3-window-border
 new_window 1pixel
@@ -197,3 +199,4 @@ new_float 1pixel
 
 popup_during_fullscreen smart
  
+# vim:filetype=i3
