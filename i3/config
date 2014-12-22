@@ -147,13 +147,13 @@ bar {
 	tray_output primary
 	
 	colors {
-		background #002b36
-        	statusline #93a1a1
-        	separator  #073642
-        	focused_workspace  #586e75 #657b83 #fdf6e3
-        	active_workspace   #1a2122 #232323 #eee8d5
-        	inactive_workspace #073642 #073642 #93a1a1
-        	urgent_workspace   #dc322f #dc322f #fdf6e3
+		background #1F2028
+        	statusline #93A1A1
+        	separator  #93A1A1
+        	focused_workspace  #1F2028 #1F2028 #8B3A50
+        	active_workspace   #1F2028 #1F2028 #eee8d5
+        	inactive_workspace #1F2028 #1F2028 #93a1a1
+        	urgent_workspace   #1F2028 #1F2028 #DC322F
 	}
 }
 
@@ -190,9 +190,9 @@ assign [class="zsnes"] $ws9
 
 # $i3-theme-window
 # class                 border  backgr. text    indicator
-client.focused          #586e75 #586e75 #fdf6e3 #268bd2
-client.focused_inactive #073642 #073642 #93a1a1 #268bd2
-client.unfocused        #073642 #073642 #93a1a1 #268bd2
+client.focused          #151515 #151515 #fdf6e3 #268bd2
+client.focused_inactive #1F2028 #1F2028 #93a1a1 #268bd2
+client.unfocused        #151515 #1F2028 #93a1a1 #268bd2
 client.urgent           #dc322f #dc322f #fdf6e3 #ffa7da
 
 # i3-window-border
